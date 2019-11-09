@@ -1,5 +1,6 @@
 package com.example.tareas.data.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.tareas.data.db.model.Task
 
@@ -22,9 +23,9 @@ interface TaskDao{
     suspend fun byId(id:Long):Task
 
     @Query("SELECT * FROM task ORDER BY date DESC")
-    suspend fun all():List<Task>
+    fun all(): LiveData<List<Task>>
 
     @Query("SELECT * FROM task WHERE title LIKE :title")
-    suspend fun allByTitle(title:String)
+    fun allByTitle(title:String):LiveData<List<Task>>
 
 }

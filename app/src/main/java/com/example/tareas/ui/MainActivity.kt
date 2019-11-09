@@ -1,7 +1,8 @@
-package com.example.tareas
+package com.example.tareas.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tareas.R
 
 class MainActivity : AppCompatActivity() {
 
