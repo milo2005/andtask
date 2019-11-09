@@ -7,24 +7,24 @@ import com.example.tareas.data.db.model.Task
 interface TaskDao{
 
     @Insert
-    fun insert(task: Task)
+    suspend fun insert(task: Task)
 
     @Insert
-    fun insertMany(tasks:List<Task>)
+    suspend fun insertMany(tasks:List<Task>)
 
     @Update
-    fun update(task:Task)
+    suspend fun update(task:Task)
 
     @Delete
-    fun delete(task:Task)
+    suspend fun delete(task:Task)
 
     @Query("SELECT * FROM task WHERE id = :id")
-    fun byId(id:Long):Task
+    suspend fun byId(id:Long):Task
 
     @Query("SELECT * FROM task ORDER BY date DESC")
-    fun all():List<Task>
+    suspend fun all():List<Task>
 
     @Query("SELECT * FROM task WHERE title LIKE :title")
-    fun allByTitle(title:String)
+    suspend fun allByTitle(title:String)
 
 }
