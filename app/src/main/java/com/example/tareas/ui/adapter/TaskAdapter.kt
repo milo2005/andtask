@@ -31,7 +31,7 @@ class TaskAdapter: RecyclerView.Adapter<TaskHolder>(){
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) =
-        holder.bind(data[position],dateFormat)
+        holder.bind(data[position],dateFormat, this)
 
     fun removeTask(task:Task){
         onRemoveTask?.invoke(task)
@@ -43,9 +43,10 @@ class TaskHolder(view:View):RecyclerView.ViewHolder(view){
 
     private val binding:TemplateTaskBinding = TemplateTaskBinding.bind(view)
 
-    fun bind(task: Task,format:SimpleDateFormat ){
+    fun bind(task: Task,format:SimpleDateFormat, handler:TaskAdapter ){
         binding.task = task
         binding.dateFormat = format
+        binding.handler = handler
     }
 
 }
