@@ -16,8 +16,7 @@ class TaskViewModel(private val repo: TaskRepository) : ViewModel() {
             }
         }*/
 
-    val data: LiveData<List<Task>> =
-        Transformations.switchMap(filterControl) { repo.all(it)}
+    val data: LiveData<List<Task>> = filterControl.switchMap (repo::all)
 
     fun add(task: Task) = viewModelScope.launch {
         repo.insert(task)
