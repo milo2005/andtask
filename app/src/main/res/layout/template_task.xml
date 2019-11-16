@@ -11,6 +11,9 @@
         <variable
             name="dateFormat"
             type="java.text.SimpleDateFormat" />
+        <variable
+            name="handler"
+            type="com.example.tareas.ui.adapter.TaskAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,6 +78,7 @@
             android:layout_marginRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{()-> handler.removeTask(task)}"
             app:srcCompat="@drawable/ic_clear" />
 
         <View

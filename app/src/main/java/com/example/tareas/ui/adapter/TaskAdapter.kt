@@ -18,6 +18,8 @@ class TaskAdapter: RecyclerView.Adapter<TaskHolder>(){
             notifyDataSetChanged()
         }
 
+    var onRemoveTask:((task:Task)->Unit)? = null
+
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
@@ -31,6 +33,9 @@ class TaskAdapter: RecyclerView.Adapter<TaskHolder>(){
     override fun onBindViewHolder(holder: TaskHolder, position: Int) =
         holder.bind(data[position],dateFormat)
 
+    fun removeTask(task:Task){
+        onRemoveTask?.invoke(task)
+    }
 
 }
 
